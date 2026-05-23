@@ -26,6 +26,10 @@ const UserSchema = new Schema(
       enum: ["user", "admin"],
       default: "user",
     },
+    refreshToken: {
+      type: String,
+      default: null,
+    },
     isVarified: {
       type: Boolean,
       default: false,

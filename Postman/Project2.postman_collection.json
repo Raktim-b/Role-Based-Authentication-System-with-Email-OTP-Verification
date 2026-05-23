@@ -107,7 +107,7 @@
         "header": [
           {
             "key": "Authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDlhNzNhYjEwZGE3NTlkZGMzZmQxZCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiam9obkB5b3BtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3OTUxODA3NCwiZXhwIjoxNzc5NjA0NDc0fQ.WGR1q7C45ITRkBFvLNFu6zTfaHAG_xv_ruNkh8okSRU",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDk3MGY5YTIxZjYyMjcxNjgxNDc2MyIsIm5hbWUiOiJTcmludSIsImVtYWlsIjoic3JpbnVAeW9wbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3OTUxOTc4MiwiZXhwIjoxNzc5NjA2MTgyfQ.34klhkgy0YKOvgq763mRqt-RIU0r0NlqSjeZ-ckfd20",
             "type": "text"
           }
         ],
@@ -132,7 +132,7 @@
         "header": [
           {
             "key": "Authorization",
-            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDk3MGY5YTIxZjYyMjcxNjgxNDc2MyIsIm5hbWUiOiJTcmludSIsImVtYWlsIjoic3JpbnVAeW9wbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3OTUxOTc4MiwiZXhwIjoxNzc5NjA2MTgyfQ.34klhkgy0YKOvgq763mRqt-RIU0r0NlqSjeZ-ckfd20",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDk3MGY5YTIxZjYyMjcxNjgxNDc2MyIsIm5hbWUiOiJTcmludSIsImVtYWlsIjoic3JpbnVAeW9wbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3OTUzODM5MywiZXhwIjoxNzc5NTM4NjkzfQ.5wDPz5Y_Lm_ohUGjqcmLGASJjyNsJKM8mVy45mAocGc",
             "type": "text"
           }
         ],
@@ -145,6 +145,38 @@
           "port": "4017",
           "path": [
             "profile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "refresh-token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDk3MGY5YTIxZjYyMjcxNjgxNDc2MyIsIm5hbWUiOiJTcmludSIsImVtYWlsIjoic3JpbnVAeW9wbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3OTUzODM3NywiZXhwIjoxNzgwMTQzMTc3fQ.ulYCEiWe3C6XAR23RLpG9W4ny7WXZzn3xSvRf3grASk",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:4017/refresh-token",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4017",
+          "path": [
+            "refresh-token"
           ]
         }
       },

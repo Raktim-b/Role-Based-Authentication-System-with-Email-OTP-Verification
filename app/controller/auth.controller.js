@@ -71,7 +71,7 @@ class AuthController {
         });
       }
 
-      const token = jwt.sign(
+      const accessToken = jwt.sign(
         {
           id: checkUser._id,
           name: checkUser.name,
@@ -79,8 +79,20 @@ class AuthController {
           role: checkUser.role,
         },
         process.env.JWT_SECRET,
-        { expiresIn: "1d" },
+        { expiresIn: "5m" },
       );
+      const refreshToken = jwt.sign(
+        {
+          id: checkUser._id,
+          name: checkUser.name,
+          email: checkUser.email,
+          role: checkUser.role,
+        },
+        process.env.JWT_REFRESH_SECRET,
+        { expiresIn: "7d" },
+      );
+      checkUser.refreshToken = refreshToken;
+      await checkUser.save();
       return res.status(httpStatusCode.OK).json({
         success: true,
         message: "User Logedin Successfully",
@@ -89,7 +101,58 @@ class AuthController {
           name: checkUser.name,
           email: checkUser.email,
         },
-        token: token,
+        accessToken: accessToken,
+        refreshToken: refreshToken,
+      });
+    } catch (error) {
+      return res.status(httpStatusCode.INTERNAL_SERVER_ERROR).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+  async refreshToken(req, res) {
+    try {
+      const refreshToken = req.headers["refresh-token"];
+      if (!refreshToken) {
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "Refresh token missing",
+        });
+      }
+      const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+      const user = await userModel.findById(decoded.id);
+      if (!user) {
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "User not found",
+        });
+      }
+      if (user.refreshToken !== refreshToken) {
+        return res.status(httpStatusCode.UNAUTHORIZED).json({
+          success: false,
+          message: "Invalid refresh token",
+        });
+      }
+      const newAccessToken = jwt.sign(
+        {
+          id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "5m",
+        },
+      );
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        data: {
+          name: user.name,
+          email: user.email,
+          newAccessToken: newAccessToken,
+        },
       });
     } catch (error) {
       return res.status(httpStatusCode.INTERNAL_SERVER_ERROR).json({

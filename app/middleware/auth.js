@@ -5,8 +5,8 @@ const AuthCheck = (req, res, next) => {
   const token =
     req?.body?.token ||
     req?.query?.token ||
-    req?.header?.["x-access-token"] ||
-    req?.header?.["authorization"];
+    req?.headers["x-access-token"] ||
+    req?.headers["authorization"];
 
   if (!token) {
     return res.status(httpStatusCode.BAD_REQUEST).json({

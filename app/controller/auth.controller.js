@@ -76,6 +76,7 @@ class AuthController {
           id: checkUser._id,
           name: checkUser.name,
           email: checkUser.email,
+          role: checkUser.role,
         },
         process.env.JWT_SECRET,
         { expiresIn: "1d" },
@@ -152,6 +153,42 @@ class AuthController {
       return res
         .status(httpStatusCode.OK)
         .json({ status: true, message: "Email verified successfully" });
+    } catch (error) {
+      return res.status(httpStatusCode.INTERNAL_SERVER_ERROR).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+  async dashboard(req, res) {
+    try {
+      const result = await userModel.find();
+      return res.status(httpStatusCode.OK).json({
+        status: true,
+        message: "dashboard opened successfully",
+        data: result,
+      });
+    } catch (error) {
+      return res.status(httpStatusCode.INTERNAL_SERVER_ERROR).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+  async profile(req, res) {
+    try {
+      const user = await userModel.findById(req.user.id).select("-password");
+      if (!user) {
+        return res.status(httpStatusCode.NOT_FOUND).json({
+          success: false,
+          message: "User not found",
+        });
+      }
+      return res.status(httpStatusCode.OK).json({
+        success: true,
+        message: "Profile fetched successfully",
+        data: user,
+      });
     } catch (error) {
       return res.status(httpStatusCode.INTERNAL_SERVER_ERROR).json({
         success: false,

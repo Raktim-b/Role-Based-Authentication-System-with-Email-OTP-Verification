@@ -17,7 +17,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"name\": \"Srinu\",\r\n    \"email\": \"srinu@yopmail.com\",\r\n    \"phone\": \"9876543210\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"user\"\r\n}",
+          "raw": "{\r\n  \"name\": \"Admin\",\r\n  \"email\": \"john@yopmail.com\",\r\n  \"phone\": \"9999999999\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"admin\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -79,7 +79,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"email\": \"srinu@yopmail.com\",\r\n    \"otp\": \"985428\"\r\n}",
+          "raw": "{\r\n    \"email\": \"john@yopmail.com\",\r\n    \"otp\": \"335816\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -95,6 +95,56 @@
           "port": "4017",
           "path": [
             "verify"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDlhNzNhYjEwZGE3NTlkZGMzZmQxZCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiam9obkB5b3BtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc3OTUxODA3NCwiZXhwIjoxNzc5NjA0NDc0fQ.WGR1q7C45ITRkBFvLNFu6zTfaHAG_xv_ruNkh8okSRU",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:4017/dashboard",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4017",
+          "path": [
+            "dashboard"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhMDk3MGY5YTIxZjYyMjcxNjgxNDc2MyIsIm5hbWUiOiJTcmludSIsImVtYWlsIjoic3JpbnVAeW9wbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3OTUxOTc4MiwiZXhwIjoxNzc5NjA2MTgyfQ.34klhkgy0YKOvgq763mRqt-RIU0r0NlqSjeZ-ckfd20",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:4017/profile",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "4017",
+          "path": [
+            "profile"
           ]
         }
       },

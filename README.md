@@ -409,7 +409,7 @@ Building this project helped me understand:
 
 # 👨‍💻 Author
 
-## Srinu
+## Raktim Bhattacharya
 
 **Backend Developer**
 
